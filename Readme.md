@@ -27,7 +27,7 @@ Python implementation of classical CSP solving algorithms for educational purpos
 
 ```python
 from algorithms.csp_framework import CSP
-from algorithms.completeSearch.sra_algorithm import SRA
+from algorithms.sra_algorithm import SRA
 
 # Create CSP instance
 csp = create_nqueens_csp(8)
@@ -59,3 +59,4 @@ CSP/
 ## University Course
 
 CSP - Semester 7, 2025
+
