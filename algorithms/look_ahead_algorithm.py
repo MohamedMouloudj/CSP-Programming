@@ -71,11 +71,6 @@ def MAC_Look_Ahead(csp: CSP, assignment:dict|None=None, domains:dict|None=None, 
     return None
 
 
-from collections import deque
-from algorithms.csp_framework import CSP
-from algorithms.localConsistency.ac3 import AC3, AC3_Incremental
-from algorithms.utils import display_domains
-import copy
 
 def Look_Ahead(csp: CSP, assignment: dict | None = None, domains: dict | None = None, verbose=False):
     """
