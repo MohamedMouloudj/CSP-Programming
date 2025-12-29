@@ -2,7 +2,7 @@ from algorithms.csp_framework import CSP
 from algorithms.get_algorithm import GET
 from algorithms.sra_algorithm import SRA
 from algorithms.fc_algorithm import FC
-from algorithms.look_ahead_algorithm import Look_Ahead
+from algorithms.look_ahead_algorithm import Look_Ahead, MAC_Look_Ahead
 
 def create_nqueens_csp(n):
     """
@@ -68,12 +68,16 @@ if __name__ == "__main__":
             ("GET", GET),
             ("SRA", SRA),
             ("FC", FC),
-            ("Look-Ahead (MAC)", Look_Ahead)
+            ("Look-Ahead", Look_Ahead),
+            ("MAC Look-Ahead", MAC_Look_Ahead)
         ]
         
         for name, algo in algorithms:
             print(f"\n--- Using {name} Algorithm ---")
-            solution = algo(csp)
+            if name in ["Look-Ahead", "MAC Look-Ahead"]:
+                solution = algo(csp, verbose=True)
+            else:
+                solution = algo(csp)
             print_nqueens_solution(solution, n)
             if solution:
                 print(f"{name} Solution:")

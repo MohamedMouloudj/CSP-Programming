@@ -1,7 +1,8 @@
 from algorithms.csp_framework import CSP
+from algorithms.utils import display_domains
 import copy
 
-def FC(csp: CSP, assignment=None, domains=None):
+def FC(csp: CSP, assignment=None, domains=None, verbose=False):
     """
     Forward Checking Algorithm for CSP
     
@@ -37,7 +38,10 @@ def FC(csp: CSP, assignment=None, domains=None):
         
         # Forward checking: filter future domains
         new_domains = copy.deepcopy(domains)
-        new_domains[Xi] = [vi]  # Fix Xi to vi
+        new_domains[Xi] = [vi]
+        
+        if verbose:
+            display_domains(new_domains, f"FC: After assigning {Xi}={vi}")
         
         consistent = True
         

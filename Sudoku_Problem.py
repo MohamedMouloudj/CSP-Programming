@@ -2,6 +2,7 @@ from algorithms.csp_framework import CSP
 from algorithms.get_algorithm import GET
 from algorithms.sra_algorithm import SRA
 from algorithms.fc_algorithm import FC
+from algorithms.look_ahead_algorithm import Look_Ahead, MAC_Look_Ahead
 
 
 def create_sudoku_mini():
@@ -11,15 +12,13 @@ def create_sudoku_mini():
     variables = [f'X{i}{j}' for i in range(4) for j in range(4)]
     domains = {var: [1, 2, 3, 4] for var in variables}
     
-    # Pre-assigned values (initial state)
     initial = {
-        'X00': 1, 'X02': 3,
-        'X10': 3, 'X13': 1,
-        'X20': 2, 'X23': 4,
-        'X31': 3, 'X33': 2
+        'X01': 3,
+        'X10': 4,
+        'X23': 4,
+        'X32': 2
     }
     
-    # Fix domains for initial values
     for var, val in initial.items():
         domains[var] = [val]
     
@@ -83,6 +82,26 @@ if __name__ == "__main__":
     solution = FC(sudoku_csp)
     if solution:
         print("FC Solution found:")
+        for i in range(4):
+            row = [str(solution[f'X{i}{j}']) for j in range(4)]
+            print(' '.join(row))
+    else:
+        print("No solution found!")
+    
+    print("\n--- Using Look-Ahead Algorithm ---")
+    solution = Look_Ahead(sudoku_csp)
+    if solution:
+        print("LA Solution found:")
+        for i in range(4):
+            row = [str(solution[f'X{i}{j}']) for j in range(4)]
+            print(' '.join(row))
+    else:
+        print("No solution found!")
+    
+    print("\n--- Using MAC Look-Ahead Algorithm ---")
+    solution = MAC_Look_Ahead(sudoku_csp)
+    if solution:
+        print("MAC Solution found:")
         for i in range(4):
             row = [str(solution[f'X{i}{j}']) for j in range(4)]
             print(' '.join(row))

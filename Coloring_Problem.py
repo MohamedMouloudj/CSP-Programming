@@ -2,6 +2,7 @@ from algorithms.csp_framework import CSP
 from algorithms.get_algorithm import GET
 from algorithms.sra_algorithm import SRA
 from algorithms.fc_algorithm import FC
+from algorithms.look_ahead_algorithm import Look_Ahead, MAC_Look_Ahead
 
 def create_map_coloring():
     """
@@ -41,3 +42,11 @@ if __name__ == "__main__":
     print("--- Using FC Algorithm ---")
     solution = FC(map_csp)
     print(f"FC Solution: {solution}\n")
+    
+    print("--- Using Look-Ahead Algorithm ---")
+    solution = Look_Ahead(map_csp, verbose=True)
+    print(f"LA Solution: {solution}\n")
+    
+    print("--- Using MAC Look-Ahead Algorithm ---")
+    solution = MAC_Look_Ahead(map_csp, verbose=True)
+    print(f"MAC Solution: {solution}\n")
