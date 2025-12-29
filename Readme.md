@@ -9,12 +9,14 @@ Python implementation of classical CSP solving algorithms for educational purpos
 - **GET** - Generate and Test (brute force)
 - **SRA** - Simple Recursive Backtracking
 - **FC** - Forward Checking
+- **Look-Ahead** - Look-Ahead Consistency
 - **Look-Ahead (MAC)** - Maintaining Arc Consistency
 
 ### Local Consistency Algorithms
 
 - **AC1** - Arc Consistency 1
 - **AC3** - Arc Consistency 3
+- **AC3-Incremental** - Incremental AC3
 - **REVISE** - Domain filtering helper
 
 ## Test Problems
@@ -42,6 +44,7 @@ print(solution)
 ```
 CSP/
 ├── algorithms/
+│   ├── utils.py
 │   ├── csp_framework.py
 │   ├── completeSearch/
 │   │   ├── get_algorithm.py
